@@ -1,8 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Director, Movie, Review
-from .serializers import DirectorSerializer, MovieSerializer, ReviewSerializer
+from .serializers import DirectorSerializer, MovieSerializer, ReviewSerializer, SecondMovieSerializer
 from rest_framework import status
+
 
 # Вывести список режиссеров
 @api_view(['GET'])
@@ -10,6 +11,7 @@ def director_list_view(request):
     directors = Director.objects.all()
     data = DirectorSerializer(directors, many=True).data
     return Response(data)
+
 
 # Вывести одного режиссера
 @api_view(['GET'])
@@ -21,12 +23,14 @@ def director_detail_view(request, id):
     data = DirectorSerializer(director).data
     return Response(data=data)
 
+
 # Вывести список фильмов
 @api_view(['GET'])
 def movie_list_view(request):
     movies = Movie.objects.all()
     data = MovieSerializer(movies, many=True).data
     return Response(data)
+
 
 # Вывести один фильм
 @api_view(['GET'])
@@ -38,12 +42,14 @@ def movie_detail_view(request, id):
     data = MovieSerializer(movie).data
     return Response(data=data)
 
+
 # Вывести список отзывов
 @api_view(['GET'])
 def review_list_view(request):
     reviews = Review.objects.all()
     data = ReviewSerializer(reviews, many=True).data
     return Response(data)
+
 
 # Вывести один отзыв
 @api_view(['GET'])
@@ -54,3 +60,10 @@ def review_detail_view(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND, data={'message': "Отзыв не найден"})
     data = ReviewSerializer(review).data
     return Response(data=data)
+
+
+@api_view(['GET'])
+def movie_review_average_and_count(request):
+    movies = Movie.objects.all()
+    data = SecondMovieSerializer(movies, many=True).data
+    return Response(data)

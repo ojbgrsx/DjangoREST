@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/djangoRest_afisha.iml" filepath="$PROJECT_DIR$/.idea/djangoRest_afisha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/DjangoREST.iml" filepath="$PROJECT_DIR$/.idea/DjangoREST.iml" />
     </modules>
   </component>
 </project>
